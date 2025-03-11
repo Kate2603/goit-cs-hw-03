@@ -1,10 +1,11 @@
 from pymongo import MongoClient
 import random
+from config import MONGO_URI, MONGO_DB_NAME, MONGO_COLLECTION_NAME
 
-# Підключення до MongoDB
-client = MongoClient("mongodb+srv://kiti:CM6Z6Dd3cjz*RRs@cluster0.5vz2t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client["cat_database"]
-collection = db["cats"]
+# Підключення до MongoDB через конфігураційний файл
+client = MongoClient(MONGO_URI)
+db = client[MONGO_DB_NAME]
+collection = db[MONGO_COLLECTION_NAME]
 
 # Функція для додавання нового кота
 def add_cat(name, age, features):
